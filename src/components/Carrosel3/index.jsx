@@ -41,7 +41,7 @@ export default function Carrosel3({ titulo, videos }) {
               <h2>Cada dia que passa meu coração transborda de amor por você.</h2>
               <h2>Cada sorriso seu me enche de alegria e ilumina meu dia, meu mundo.</h2>
               <h2>Seu Beijo seu Abraço me fazem ter certeza de que é você que eu quero pra minha vida, sempre ficar ao seu lado, enfrentando todos os problemas juntos e superando todos eles para ficarmos juntos.</h2>
-              <h2>Muito Obrigado por me estar ao meu lado, cada dia você me inspira a ser uma pessoa melhor.</h2>
+              <h2>Muito Obrigado por estar ao meu lado, cada dia você me inspira a ser uma pessoa melhor.</h2>
               <h1 className={style.final}>EU te amo para sempre ! ❤</h1>
               
               
