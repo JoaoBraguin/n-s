@@ -1,0 +1,115 @@
+.secaoCarrossel {
+    display: flex;
+    border: solid black 2px;
+    flex-direction: column;
+
+    h1 {
+        margin-left: 12px;
+        text-align: center;
+        padding: 15px;
+
+
+    }
+}
+
+.carrossel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    overflow: hidden;
+    width: 90vw;
+
+    button {
+        background: transparent;
+        border: transparent;
+        cursor: pointer;
+
+    }
+}
+
+.carrosselItens {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    flex: 1;
+    gap: 20px;
+    margin: 12px;
+    text-align: center;
+
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    max-width: 900px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    img {
+        width: 400px;
+        height: 500px;
+        object-fit: cover;
+        border-top-right-radius: 8px;
+        border-radius: 12px;
+        width: 100%;
+    }
+
+    .informacaoCarrossel {
+        padding: 8px;
+        background-color: rgba(8, 2, 2, 0.947);
+        border-radius: 8px;
+        color: white;
+
+    }
+
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    color: white;
+    padding: 15px;
+
+}
+
+.iframe1 {
+    margin: 10px;
+    width: 390px;
+
+}
+
+.eu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+    h3 {
+        margin: 20px;
+    }
+
+}
+
+.linha{
+    color: rgb(255, 0, 191);
+}
+
+.dec{
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    margin: 30px;
+    padding: 10px;
+}
+
+.final{
+    color: red;
+}
+
+
