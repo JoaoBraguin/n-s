@@ -17,8 +17,6 @@ export default function Carrosel3({ titulo, videos }) {
   }
 
   const item1 = videos[ajustarIndice(indice)];
-  const item2 = videos[ajustarIndice(indice + 1)];
-  const item3 = videos[ajustarIndice(indice + 2)];
 
   return (
     <div className={style.secaoCarrossel}>
@@ -32,21 +30,8 @@ export default function Carrosel3({ titulo, videos }) {
               <p>{item1.description}</p>
             </div>
           </div>
-          <div className={style.item}>
-            <img src={item2.src} alt="" />
-            <div className={style.informacaoCarrossel}>
-              <h3>{item2.title}</h3>
-              <p>{item2.description}</p>
-            </div>
-          </div>
-          <div className={style.item}>
-            <img src={item3.src} alt="" />
-            <div className={style.informacaoCarrossel}>
-              <h3>{item3.title}</h3>
-              <p>{item3.description}</p>
-            </div>
-          </div>
-          <div className={style.eu}>
+        </div>
+        <div className={style.eu}>
             <strong>Eu te amo há:</strong>
             <h3>1 ano, 10 meses</h3>
             <strong className={style.linha}>
@@ -62,26 +47,7 @@ export default function Carrosel3({ titulo, videos }) {
               
               
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           </div>
-        </div>
       </div>
     </div>
   );
