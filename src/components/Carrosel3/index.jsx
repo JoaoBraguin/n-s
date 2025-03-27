@@ -20,7 +20,7 @@ export default function Carrosel3({ titulo, videos }) {
 
   return (
     <div className={style.secaoCarrossel}>
-      <iframe className={style.iframe1} onPlay={true} src="https://open.spotify.com/embed/track/59qC8XPUyBWsmr9v3CQPGF?utm_source=generator" width="100%" height="152" frameBorder="0" allowFullScreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+      <iframe className={style.iframe1} onPlay={true} src="https://open.spotify.com/embed/track/59qC8XPUyBWsmr9v3CQPGF?utm_source=generator" width="80%" height="152" frameBorder="0" allowFullScreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" ></iframe>
       <div className={style.carrossel}>
         <div className={style.carrosselItens}>
           <div className={style.item}>

@@ -58,6 +58,7 @@
         border-top-right-radius: 8px;
         border-radius: 12px;
         width: 100%;
+        object-fit: cover;
     }
 
     .informacaoCarrossel {
