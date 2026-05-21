@@ -25,7 +25,7 @@ export default function Carrosel3({ titulo, videos }) {
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             />
 
-            
+
 
             <div className={style.carrossel}>
                 {/* Foto */}
@@ -51,9 +51,9 @@ export default function Carrosel3({ titulo, videos }) {
                     </div> */}
                     <div className={style.dec}>
                         <h1 className={style.feliz}>SOBRE NÓS ❤</h1>
-                        <p>Obrigado por estar do meu lado</p>
-                        <p>Por me amar, cuidar de mim, cada sorriso seu me alegra a cada dia mais.</p>
+                        <p>DOIS MESES DE NÓS</p>
                         <p>Muito obrigado por estar ao meu lado. Cada dia você me inspira a ser uma pessoa melhor.</p>
+                        <p>Por me amar, cuidar de mim, cada sorriso seu me alegra a cada dia mais.</p>
                         <p>Quero ficar com você pra sempre!</p>
                         <div className={style.emvolta}>
                             <h1 className={style.final}>EU TE AMO ❤</h1>
