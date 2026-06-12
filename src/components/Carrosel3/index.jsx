@@ -18,7 +18,7 @@ export default function Carrosel3({ titulo, videos }) {
             {/* Spotify */}
             <iframe
                 className={style.iframe1}
-                src="https://open.spotify.com/embed/track/66rhnZizvTv2ufYpyHoWoW?utm_source=generator&theme=0&si=456a2119d4e148bc" width="100%" height="352" frameBorder="0"
+                src="https://open.spotify.com/embed/track/66rhnZizvTv2ufYpyHoWoW?utm_source=generator&theme=0&si=456a2119d4e148bc" 
                 height="152"
                 frameBorder="0"
                 allowFullScreen
