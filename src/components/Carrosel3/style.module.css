@@ -88,6 +88,7 @@
 
 .dec {
     display: flex;
+    align-items: center;
     flex-direction: column;
     gap: 14px;
     margin-top: 20px;
@@ -96,6 +97,8 @@
     font-size: 15px;
     line-height: 1.6;
     color: white;
+    width: 350px;
+
 }
 
 .dec h1 {
@@ -105,6 +108,7 @@
     margin: 0;
     font-family: "Montserrat", sans-serif;
     font-optical-sizing: auto;
+    width: 500px;
 }
 
 .feliz {
@@ -120,6 +124,8 @@
 
     .final {
         display: flex;
+        align-items: center;
+        justify-content: center;
         margin: auto;
         color: white !important;
     }

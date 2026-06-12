@@ -18,7 +18,7 @@ export default function Carrosel3({ titulo, videos }) {
             {/* Spotify */}
             <iframe
                 className={style.iframe1}
-                src="https://open.spotify.com/embed/track/1xOvhnH7iTN1ChsptsT8w8?utm_source=generator&theme=0"
+                src="https://open.spotify.com/embed/track/66rhnZizvTv2ufYpyHoWoW?utm_source=generator&theme=0&si=456a2119d4e148bc" width="100%" height="352" frameBorder="0"
                 height="152"
                 frameBorder="0"
                 allowFullScreen
@@ -51,11 +51,12 @@ export default function Carrosel3({ titulo, videos }) {
                         </strong>
                     </div> */}
                     <div className={style.dec}>
-                        <h1 className={style.feliz}>SOBRE NÓS ❤</h1>
-                        <p>DOIS MESES DE NÓS</p>
-                        <p>Muito obrigado por estar ao meu lado. Cada dia você me inspira a ser uma pessoa melhor.</p>
-                        <p>Por me amar, cuidar de mim, cada sorriso seu me alegra a cada dia mais.</p>
-                        <p>Quero ficar com você pra sempre!</p>
+                        <h1 className={style.feliz}>FELIZ DIA DOS NAMORADOS MEU AMOR ❤</h1>
+                        {/* <p>DOIS MESES DE NÓS</p> */}
+                        <p>Você me ilumina todos os dias !</p>
+                        <p>Quero ficar ao seu lado minha vida inteira</p>
+                        <p>Muito Obrigado por tanto, você é a mulher que eu sempre sonhei !</p>
+                        <p>Eu amo esse sorriso !</p>
                         <div className={style.emvolta}>
                             <h1 className={style.final}>EU TE AMO ❤</h1>
                         </div>
