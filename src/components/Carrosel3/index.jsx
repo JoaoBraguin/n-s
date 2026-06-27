@@ -57,6 +57,7 @@ export default function Carrosel3({ titulo, videos }) {
                         <p>Quero ficar ao seu lado minha vida inteira</p>
                         <p>Muito Obrigado por tanto, você é a mulher que eu sempre sonhei !</p>
                         <p>Eu amo esse sorriso !</p>
+                        <p>Eu te amoooo</p>
                         <div className={style.emvolta}>
                             <h1 className={style.final}>EU TE AMO ❤</h1>
                         </div>
