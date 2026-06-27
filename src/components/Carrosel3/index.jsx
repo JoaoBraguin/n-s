@@ -18,9 +18,7 @@ export default function Carrosel3({ titulo, videos }) {
             {/* Spotify */}
             <iframe
                 className={style.iframe1}
-                src="https://open.spotify.com/embed/track/66rhnZizvTv2ufYpyHoWoW?utm_source=generator&theme=0&si=456a2119d4e148bc" 
-                height="152"
-                frameBorder="0"
+                src="https://open.spotify.com/embed/track/2Ukq0uTw4ZWha7TYAv53c8?utm_source=generator&theme=0&si=71a33a11713045af" width="100%" height="352" frameBorder="0" 
                 allowFullScreen
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 title="Spotify music player"
@@ -57,7 +55,6 @@ export default function Carrosel3({ titulo, videos }) {
                         <p>Quero ficar ao seu lado minha vida inteira</p>
                         <p>Muito Obrigado por tanto, você é a mulher que eu sempre sonhei !</p>
                         <p>Eu amo esse sorriso !</p>
-                        <p>Eu te amoooo</p>
                         <div className={style.emvolta}>
                             <h1 className={style.final}>EU TE AMO ❤</h1>
                         </div>

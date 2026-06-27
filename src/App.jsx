@@ -12,12 +12,12 @@ import foto4 from './images/foto4.jpeg';
 import foto8 from './images/foto8.jpeg';
 
 function App() {
-  const [hearts, setHearts] = useState([]);
+  const [stars, setStars] = useState([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setHearts((prev) => [
-        ...prev.filter((h) => h.y < window.innerHeight),
+      setStars((prev) => [
+        ...prev.filter((s) => s.y < window.innerHeight),
         {
           id: Math.random(),
           left: Math.random() * 100,
@@ -44,22 +44,22 @@ function App() {
 
   return (
     <div className="app-wrapper">
-      {/* Corações de fundo */}
+      {/* Estrelas de fundo */}
       <div className="hearts-container">
-        {hearts.map((heart) => (
+        {stars.map((star) => (
           <motion.div
-            key={heart.id}
-            initial={{ y: "-10%", opacity: heart.opacity, x: `${heart.left}%` }}
+            key={star.id}
+            initial={{ y: "-10%", opacity: star.opacity, x: `${star.left}%` }}
             animate={{
               y: "100vh",
-              opacity: heart.opacity,
-              x: `${heart.left + (Math.random() * 10 - 5)}%`,
+              opacity: star.opacity,
+              x: `${star.left + (Math.random() * 10 - 5)}%`,
             }}
-            transition={{ duration: heart.duration, ease: "linear" }}
+            transition={{ duration: star.duration, ease: "linear" }}
             className="heart-item"
-            style={{ fontSize: `${heart.size}px`, left: `${heart.left}%` }}
+            style={{ fontSize: `${star.size}px`, left: `${star.left}%` }}
           >
-            ❤️
+            ⭐
           </motion.div>
         ))}
       </div>
