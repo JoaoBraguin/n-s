@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import style from './style.module.css';
 import { FaHeart } from "react-icons/fa";
 import { CiCalendar } from "react-icons/ci";
+import { GoClock } from "react-icons/go";
 
 // Configuração padrão de reveal ao rolar a tela
 const fadeUp = {
@@ -155,7 +156,8 @@ export default function Carrosel3({ titulo, videos, momentos = [] }) {
                 transition={{ duration: 0.7, ease: "easeOut" }}
             >
                 <div className={style.timelineHeader}>
-                    <h1>Nossa Linha do Tempo</h1>
+                    <GoClock />
+                    <h1>Nossa História</h1>
                     <strong>Cada momento especial da nossa história</strong>
                 </div>
 
@@ -169,8 +171,10 @@ export default function Carrosel3({ titulo, videos, momentos = [] }) {
                             viewport={{ once: true, amount: 0.4 }}
                             transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
                         >
-                            <div className={style.timelineBackground}>
-                                <FaHeart className={style.timelineDot} />
+                            <div className={style.backheart}>
+                                <div className={style.timelineBackground}>
+                                    <FaHeart className={style.timelineDot} />
+                                </div>
                             </div>
                             <div className={style.timelineContent}>
                                 <span className={style.timelineDate}>{momento.data}</span>
