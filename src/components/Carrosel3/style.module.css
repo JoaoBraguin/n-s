@@ -224,20 +224,33 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            flex-wrap: wrap;
-            text-align: center;
             justify-content: center;
+            gap: 2px;
+            text-align: center;
             font-size: clamp(16px, 4vw, 20px);
             color: rgb(230, 177, 214);
             background-color: rgba(163, 67, 115, 0.4);
-            /* vermelho com 50% de transparência */
             padding: 10px;
             height: 110px;
             border-radius: 20px;
             width: 97px;
             border: 1px solid rgba(255, 192, 203, 0.30);
             box-sizing: border-box;
+        }
 
+        .circle strong {
+            display: block;
+            width: 100%;
+            line-height: 1.2;
+        }
+
+        .circle strong:first-child {
+            font-size: clamp(28px, 8vw, 34px);
+        }
+
+        .circle strong:last-child {
+            font-size: clamp(12px, 3vw, 14px);
+            letter-spacing: 1px;
         }
     }
 }
