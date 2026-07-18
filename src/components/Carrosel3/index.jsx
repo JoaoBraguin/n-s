@@ -82,6 +82,7 @@ export default function Carrosel3({ titulo, videos, momentos = [] }) {
                 <hr />
             </div>
 
+            {/*eu te amo*/}
             <motion.div
                 className={style.eu}
                 initial="hidden"
@@ -151,7 +152,7 @@ export default function Carrosel3({ titulo, videos, momentos = [] }) {
                 className={style.timelineSection}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.1, margin: "0px 0px -150px 0px" }}
                 variants={fadeUp}
                 transition={{ duration: 0.7, ease: "easeOut" }}
             >
@@ -168,7 +169,7 @@ export default function Carrosel3({ titulo, videos, momentos = [] }) {
                             className={style.timelineItem}
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, amount: 0.4 }}
+                            viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
                             transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
                         >
                             <div className={style.backheart}>
