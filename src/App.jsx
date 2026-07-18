@@ -16,6 +16,9 @@ import foto11 from './images/foto11.jpeg';
 import foto12 from './images/foto12.jpeg';
 import foto13 from './images/foto13.jpeg';
 import foto14 from './images/foto14.jpeg';
+import foto15 from './images/foto15.jpeg';
+import foto16 from './images/foto16.jpeg';
+
 
 function App() {
   const [items, setItems] = useState([]);
@@ -53,6 +56,8 @@ function App() {
     { src: foto12, title: "", description: "" },
     { src: foto13, title: "", description: "" },
     { src: foto14, title: "", description: "" },
+    { src: foto15, title: "", description: "" },
+    { src: foto16, title: "", description: "" },
   ];
 
   const momentos = [
@@ -64,6 +69,8 @@ function App() {
     { data: "24 de de junho de 2026", title: "Nosso segundo jogo De Copa juntos🤍", description: "Brasil x Escócia", src: foto11 },
     { data: "27 de junho de 2026", title: "Primeira festa junina juntos🤍", description: "Dia que conheceu minha família", src: foto10 },
     { data: "29 de junho de 2026", title: "Nosso terceiro jogo De Copa juntos🤍", description: "Brasil x Japão", src: foto9 },
+    { data: "17 de julho de 2026", title: "Nosso primeiro quitute juntos🤍", description: "Foto junto com o Chavinho | Dia 1", src: foto15 },
+    { data: "17 de julho de 2026", title: "Nosso primeiro quitute juntos🤍", description: "Dia 1", src: foto16 },
     
     // adicione ou edite quantos momentos quiser
   ];
