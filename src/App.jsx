@@ -18,6 +18,9 @@ import foto13 from './images/foto13.jpeg';
 import foto14 from './images/foto14.jpeg';
 import foto15 from './images/foto15.jpeg';
 import foto16 from './images/foto16.jpeg';
+import foto17 from './images/foto17.jpeg';
+import foto18 from './images/foto18.jpeg';
+import foto19 from './images/foto19.jpeg';
 
 
 function App() {
@@ -58,19 +61,25 @@ function App() {
     { src: foto14, title: "", description: "" },
     { src: foto15, title: "", description: "" },
     { src: foto16, title: "", description: "" },
+    { src: foto17, title: "", description: "" },
+    { src: foto18, title: "", description: "" },
+    { src: foto19, title: "", description: "" },
   ];
 
   const momentos = [
     { data: "27 de março de 2026", title: "Estávamos juntos na minha primeira prova de calculo🤍", description: "", src: foto1 },
     { data: "26 de abril de 2026", title: "Primeiro trabalho que fizemos juntos🤍", description: "", src: foto2 },
-    { data: "7 de junho de 2026", title: "Primeira janta juntos🤍", description: "", src: foto14 },
+    { data: "7 de junho de 2026", title: "Primeira janta juntos🤍", description: "Primeira vez que fui na sua casa", src: foto14 },
     { data: "13 de junho de 2026", title: "Nosso primeiro jogo de Copa juntos🤍", description: "Brasil x Marrocos", src: foto13 },
     { data: "19 de junho de 2026", title: "Primeira missa juntos🤍", description: "Primeira Benção juntos também ", src: foto12 },
     { data: "24 de de junho de 2026", title: "Nosso segundo jogo De Copa juntos🤍", description: "Brasil x Escócia", src: foto11 },
     { data: "27 de junho de 2026", title: "Primeira festa junina juntos🤍", description: "Dia que conheceu minha família", src: foto10 },
     { data: "29 de junho de 2026", title: "Nosso terceiro jogo De Copa juntos🤍", description: "Brasil x Japão", src: foto9 },
+    { data: "16 de julho de 2026", title: "Dia de Nossa Senhora do Carmo🤍", description: "", src: foto17 },
     { data: "17 de julho de 2026", title: "Nosso primeiro quitute juntos🤍", description: "Foto junto com o Chavinho | Dia 1", src: foto15 },
     { data: "17 de julho de 2026", title: "Nosso primeiro quitute juntos🤍", description: "Dia 1", src: foto16 },
+    { data: "18 de julho de 2026", title: "Nosso primeiro quitute juntos🤍", description: "Dia 2", src: foto18 },
+    { data: "18 de julho de 2026", title: "Nosso primeiro quitute juntos🤍", description: "Foto junto na roda gigante🤍", src: foto19 },
     
     // adicione ou edite quantos momentos quiser
   ];
