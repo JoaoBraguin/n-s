@@ -56,10 +56,18 @@
     overflow: hidden;
     width: 100%;
     max-width: 480px;
-    padding: 40px;
-    background-color: rgba(163, 67, 115, 0.25);
-    border: 1px solid rgba(255, 192, 203, 0.30);
+    padding: 56px;
+    background-color: rgba(163, 67, 115, 0.35);
+    border: 2px solid rgba(255, 192, 203, 0.35);
     box-sizing: border-box;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estado congelado: usuário clicou na foto para pausar o carrossel */
+.itemPausado {
+    border-color: rgb(230, 116, 135);
+    box-shadow: 0 0 16px rgba(230, 116, 135, 0.5);
 }
 
 .item img {
@@ -70,6 +78,22 @@
     object-fit: cover;
     border-radius: 12px;
     display: block;
+    animation: kenBurns 6s ease-out forwards;
+    transform-origin: center center;
+}
+
+/* Congela o zoom exatamente onde estava quando a foto é pausada */
+.itemPausado img {
+    animation-play-state: paused;
+}
+
+@keyframes kenBurns {
+    from {
+        transform: scale(1) translate(0, 0);
+    }
+    to {
+        transform: scale(1.12) translate(-1.5%, 1%);
+    }
 }
 
 .informacaoCarrossel {
@@ -80,6 +104,41 @@
     width: 100%;
     text-align: center;
     box-sizing: border-box;
+}
+
+/* Barra de progresso do carrossel */
+.progressBarContainer {
+    width: 100%;
+    max-width: 300px;
+    height: 4px;
+    margin-top: 14px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 42px;
+}
+
+.progressBarFill {
+    height: 100%;
+    width: 0%;
+    border-radius: 4px;
+    background: linear-gradient(to right, rgb(230, 116, 135), rgb(230, 177, 214));
+    animation-name: progressFill;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.progressBarPausada {
+    animation-play-state: paused;
+}
+
+@keyframes progressFill {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
 }
 
 /* Seção de texto */
@@ -255,6 +314,32 @@
     }
 }
 
+/* Cursor piscante do efeito "máquina de escrever" */
+.cursorPiscante {
+    display: inline-block;
+    margin-left: 2px;
+    animation: piscar 0.8s step-start infinite;
+}
+
+@keyframes piscar {
+    0%, 50% {
+        opacity: 1;
+    }
+    50.01%, 100% {
+        opacity: 0;
+    }
+}
+.flipWrapper {
+    display: inline-block;
+    perspective: 300px;
+}
+
+.flipDigit {
+    display: inline-block;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
 .music {
     display: flex;
     align-items: center;
@@ -297,6 +382,7 @@
     }
 }
 
+
 .line {
     display: flex;
     align-items: center;
@@ -305,8 +391,6 @@
     gap: 20px;
     color: rgb(230, 177, 214);
     width: 90%;
-
-
 }
 
 .line hr {
@@ -323,6 +407,17 @@
 .line svg {
     color: rgb(230, 116, 135);
     font-size: 18px;
+    animation: heartbeat 1.4s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1.5);
+    }
+    50% {
+        transform: scale(1.20);
+    }
 }
 
 /* ====== LINHA DO TEMPO ====== */
@@ -359,6 +454,17 @@
         margin: auto;
         color: rgb(230, 116, 135);
         font-size: 25px;
+        animation: clockSpin 3s linear infinite;
+        transform-origin: center;
+    }
+}
+
+@keyframes clockSpin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
     }
 }
 
@@ -378,10 +484,23 @@
     top: 6px;
     bottom: 6px;
     width: 2px;
+    background: rgba(230, 116, 135, 0.15);
+    border-radius: 2px;
+}
+
+/* Linha que "enche" conforme o usuário rola a página, por cima da trilha apagada */
+.timelineProgress {
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    border-radius: 2px;
+    transform-origin: top;
     background: linear-gradient(to bottom,
-            transparent,
             rgb(230, 116, 135),
-            transparent);
+            rgb(230, 177, 214));
+    box-shadow: 0 0 8px rgba(230, 116, 135, 0.5);
 }
 
 .timelineItem {
@@ -526,7 +645,7 @@
 
     .item {
         max-width: 420px;
-        padding: 30px;
+        padding: 42px;
     }
 
     .timelineSection {
@@ -588,7 +707,7 @@
     }
 
     .item {
-        padding: 20px;
+        padding: 28px;
         max-width: 100%;
     }
 
