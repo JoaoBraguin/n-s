@@ -121,14 +121,16 @@ function App() {
   //   3. Troque "src: undefined" abaixo por "src: pedidoNamoro"
   //   4. Troque "capa: foto14" por uma foto/print que sirva de capa pro vídeo (ex: uma imagem sua e dela)
   
-  const videoExemplo = {
-    titulo: "O Dia Que Te Pedi em Namoro",
-    subtitulo: "Um momento que vou guardar pra sempre",
-    src: undefined, // troque por: pedidoNamoro (depois de importar o .mp4)
-    capa: foto19,   // troque pela foto/print que vai servir de capa do vídeo
-    data: "09 de março de 2026",
-    duracao: "3:42",
-  };
+//lembrar de tirar o comentario da const e do video la no carrosel
+
+  // const videoExemplo = {
+  //   titulo: "O Dia Que Te Pedi em Namoro",
+  //   subtitulo: "Um momento que vou guardar pra sempre",
+  //   src: undefined, // troque por: pedidoNamoro (depois de importar o .mp4)
+  //   capa: foto19,   // troque pela foto/print que vai servir de capa do vídeo
+  //   data: "09 de março de 2026",
+  //   duracao: "3:42",
+  // };
 
   return (
     <div className="app-wrapper">
