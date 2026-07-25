@@ -21,6 +21,7 @@ import foto16 from './images/foto16.jpeg';
 import foto17 from './images/foto17.jpeg';
 import foto18 from './images/foto18.jpeg';
 import foto19 from './images/foto19.jpeg';
+import foto20 from './images/foto20.jpeg';
 import cartinhacinema from './images/cartinhacinema.jpeg'
 import cartinhacoração from './images/cartinhacoração.jpeg'
 
@@ -67,6 +68,7 @@ function App() {
     { src: foto17, title: "", description: "" },
     { src: foto18, title: "", description: "" },
     { src: foto19, title: "", description: "" },
+    { src: foto20, title: "", description: "" },
   ];
 
   const momentos = [
@@ -78,6 +80,7 @@ function App() {
     { data: "24 de de junho de 2026", title: "Nosso segundo jogo De Copa juntos🤍", description: "Brasil x Escócia", src: foto11 },
     { data: "27 de junho de 2026", title: "Primeira festa junina juntos🤍", description: "Dia que conheceu minha família", src: foto10 },
     { data: "29 de junho de 2026", title: "Nosso terceiro jogo De Copa juntos🤍", description: "Brasil x Japão", src: foto9 },
+    { data: "3 de julho de 2026", title: "Nosso primeiro Cinema juntos🤍", description: "Toy Story", src: foto20 },
     { data: "16 de julho de 2026", title: "Dia de Nossa Senhora do Carmo🤍", description: "", src: foto17 },
     { data: "17 de julho de 2026", title: "Nosso primeiro quitute juntos🤍", description: "Foto junto com o Chavinho | Dia 1", src: foto15 },
     { data: "17 de julho de 2026", title: "Nosso primeiro quitute juntos🤍", description: "Dia 1", src: foto16 },
