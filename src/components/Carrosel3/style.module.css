@@ -111,7 +111,6 @@
     width: 100%;
     max-width: 300px;
     height: 4px;
-    margin-top: 14px;
     background-color: rgba(255, 255, 255, 0.15);
     border-radius: 4px;
     overflow: hidden;
@@ -420,6 +419,554 @@
     }
 }
 
+/* ====== NOSSAS CARTINHAS ====== */
+
+.cartinhasSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.cartinhasHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: white;
+    text-align: center;
+
+    h1 {
+        font-weight: 300;
+        font-size: clamp(1.4rem, 5vw, 2.2rem);
+    }
+
+    strong {
+        font-weight: 200;
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    svg {
+        display: flex;
+        margin: auto;
+        color: rgb(230, 116, 135);
+        font-size: 25px;
+    }
+}
+
+/* "Mural de cortiça" que guarda as cartinhas */
+.cartinhasMural {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 40px;
+    padding: 44px 28px;
+    background-color: rgba(163, 67, 115, 0.22);
+    background-image: repeating-radial-gradient(circle at 25% 35%,
+            rgba(255, 255, 255, 0.025) 0,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px,
+            transparent 14px);
+    border: 1px solid rgba(255, 192, 203, 0.30);
+    border-radius: 24px;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+/* Decorações flutuantes de coração/estrela ao redor do mural */
+.decoracaoFlutuante {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.decoracao1 {
+    top: -18px;
+    left: 6%;
+    font-size: 22px;
+    color: rgb(230, 116, 135);
+    opacity: 0.55;
+    animation: flutuar 4s ease-in-out infinite;
+}
+
+.decoracao2 {
+    top: 6%;
+    right: 8%;
+    font-size: 15px;
+    color: rgb(230, 200, 150);
+    opacity: 0.5;
+    animation: cintilar 3s ease-in-out infinite;
+}
+
+.decoracao3 {
+    bottom: 12%;
+    left: 4%;
+    font-size: 13px;
+    color: rgb(230, 200, 150);
+    opacity: 0.45;
+    animation: cintilar 3.6s ease-in-out infinite 0.5s;
+}
+
+.decoracao4 {
+    bottom: -16px;
+    right: 6%;
+    font-size: 20px;
+    color: rgb(230, 116, 135);
+    opacity: 0.5;
+    animation: flutuar 5s ease-in-out infinite 1s;
+}
+
+.decoracao5 {
+    top: 42%;
+    right: 2%;
+    font-size: 16px;
+    color: rgb(230, 200, 150);
+    opacity: 0.5;
+    animation: cintilar 4s ease-in-out infinite 1.2s;
+}
+
+@keyframes flutuar {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-14px) rotate(8deg);
+    }
+}
+
+@keyframes cintilar {
+    0%, 100% {
+        opacity: 0.35;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.15);
+    }
+}
+
+/* Grid responsivo das cartinhas: 3 colunas no desktop */
+.cartinhasGrid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+}
+
+/* Cada cartinha, com aparência de papel preso por um alfinete */
+.cartinhaCard {
+    position: relative;
+    background: linear-gradient(145deg, #fdeef2, #fbd9e3);
+    border-radius: 6px;
+    padding: 30px 16px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Dobra sutil no canto inferior direito, como uma pontinha de papel */
+.cartinhaCard::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 16px 16px;
+    border-color: transparent transparent rgba(163, 67, 115, 0.35) transparent;
+}
+
+.alfinete {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgb(230, 116, 135);
+    font-size: 18px;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.4));
+}
+
+.cartinhaIcone {
+    color: rgb(230, 116, 135);
+    font-size: 22px;
+    margin-top: 8px;
+}
+
+.cartinhaTitulo {
+    color: #7a2f4d;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 4px 0 0;
+}
+
+.cartinhaData {
+    color: #a9607d;
+    font-size: 12px;
+}
+
+.cartinhaCoracao {
+    color: rgb(230, 116, 135);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* Dica de interação abaixo do mural */
+.cartinhasDica {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 34px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+}
+
+/* Estado vazio: nenhuma cartinha cadastrada ainda */
+.cartinhasVazio {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 40px 20px;
+    color: rgba(255, 255, 255, 0.75);
+    text-align: center;
+}
+
+.cartinhasVazioIcone {
+    font-size: 40px;
+    color: rgb(230, 116, 135);
+    opacity: 0.7;
+    margin-bottom: 8px;
+}
+
+/* ====== MODAL DA CARTINHA ====== */
+
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 2, 8, 0.75);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.modalCartinha {
+    position: relative;
+    background: rgba(40, 12, 26, 0.97);
+    border: 1px solid rgba(255, 192, 203, 0.3);
+    border-radius: 18px;
+    padding: 36px 44px;
+    width: 100%;
+    max-width: 420px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+
+.modalFechar {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.modalFechar:hover {
+    background: rgba(230, 116, 135, 0.4);
+}
+
+.modalNavAnterior,
+.modalNavProxima {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: white;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    z-index: 2;
+}
+
+.modalNavAnterior {
+    left: -14px;
+}
+
+.modalNavProxima {
+    right: -14px;
+}
+
+.modalNavAnterior:hover,
+.modalNavProxima:hover {
+    background: rgba(230, 116, 135, 0.5);
+}
+
+.modalConteudo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.modalTitulo {
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 6px 0 2px;
+}
+
+.modalData {
+    color: rgb(230, 177, 214);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+/* Container com visual de "papel de carta" para a imagem/scan */
+.modalImagemContainer {
+    width: 100%;
+    background: repeating-linear-gradient(to bottom,
+            #fdf6e3 0px,
+            #fdf6e3 27px,
+            #e8dcc0 28px);
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+}
+
+.modalImagemContainer img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
+
+.modalTranscricaoBtn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 18px;
+    background: none;
+    border: none;
+    color: rgb(230, 177, 214);
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.modalTranscricaoChevron {
+    transition: transform 0.3s ease;
+}
+
+.chevronAberto {
+    transform: rotate(180deg);
+}
+
+.modalTranscricaoTexto {
+    overflow: hidden;
+    width: 100%;
+}
+
+.modalTranscricaoTexto p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    line-height: 1.6;
+    padding-top: 12px;
+    text-align: left;
+    margin: 0;
+}
+
+/* ====== FIM NOSSAS CARTINHAS / MODAL ====== */
+
+/* ====== VÍDEO ESPECIAL (VLOG) ====== */
+
+.videoSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.videoHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+    text-align: center;
+    margin-bottom: 36px;
+
+    h1 {
+        font-weight: 300;
+        font-size: clamp(1.4rem, 5vw, 2.2rem);
+    }
+
+    strong {
+        font-weight: 200;
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+        color: rgb(230, 177, 214);
+    }
+}
+
+.videoPlayerWrapper {
+    width: 100%;
+    max-width: 720px;
+}
+
+/* Capa/thumbnail clicável que "esconde" o vídeo até o clique */
+.videoCapa {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 18px;
+    background-color: rgba(163, 67, 115, 0.35);
+    background-size: cover;
+    background-position: center;
+    border: 2px solid rgba(255, 192, 203, 0.35);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* Escurece a capa por cima da imagem de fundo, pra destacar o botão de play */
+.videoCapa::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top,
+            rgba(10, 2, 8, 0.75),
+            rgba(10, 2, 8, 0.15) 45%,
+            rgba(10, 2, 8, 0.55));
+}
+
+.videoSelo {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(230, 116, 135, 0.85);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.videoBotaoPlay {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    font-size: 22px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    animation: pulsarPlay 2.2s ease-in-out infinite;
+    /* leve deslocamento pra centralizar visualmente o ícone de "play" (triângulo) */
+    padding-left: 6px;
+    box-sizing: border-box;
+}
+
+@keyframes pulsarPlay {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(230, 116, 135, 0.45);
+    }
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 14px rgba(230, 116, 135, 0);
+    }
+}
+
+.videoInfoCapa {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    z-index: 2;
+    display: flex;
+    gap: 14px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+/* Player de verdade, exibido depois do clique na capa */
+.videoPlayerAtivo {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 18px;
+    overflow: hidden;
+    background-color: #000;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 192, 203, 0.35);
+    box-sizing: border-box;
+}
+
+.videoElemento {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    background-color: #000;
+}
+
+/* ====== FIM VÍDEO ESPECIAL ====== */
+
+
 /* ====== LINHA DO TEMPO ====== */
 
 .timelineSection {
@@ -635,6 +1182,10 @@
     .timeline {
         max-width: 680px;
     }
+
+    .cartinhasMural {
+        max-width: 980px;
+    }
 }
 
 /* ====== TABLET / TELAS MÉDIAS ====== */
@@ -649,6 +1200,19 @@
     }
 
     .timelineSection {
+        margin-top: 70px;
+    }
+
+    .cartinhasSection {
+        margin-top: 70px;
+    }
+
+    .cartinhasGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .videoSection {
         margin-top: 70px;
     }
 }
@@ -681,6 +1245,20 @@
 
     .timelineItem {
         margin-bottom: 50px;
+    }
+
+    .cartinhasSection {
+        margin-top: 60px;
+        padding: 0 12px;
+    }
+
+    .cartinhasMural {
+        padding: 32px 18px;
+    }
+
+    .videoSection {
+        margin-top: 60px;
+        padding: 0 12px;
     }
 }
 
@@ -748,7 +1326,39 @@
         padding: 14px;
     }
 
-    
+    .cartinhasGrid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .cartinhaCard {
+        padding: 26px 16px 18px;
+    }
+
+    .modalCartinha {
+        padding: 30px 24px;
+        max-width: 100%;
+    }
+
+    .modalNavAnterior {
+        left: 4px;
+    }
+
+    .modalNavProxima {
+        right: 4px;
+    }
+
+    .videoBotaoPlay {
+        width: 58px;
+        height: 58px;
+        font-size: 18px;
+    }
+
+    .videoSelo {
+        font-size: 10px;
+        padding: 5px 10px;
+    }
+
 }
 
 /* ====== CELULARES PEQUENOS (iPhone SE e similares) ====== */

@@ -21,6 +21,9 @@ import foto16 from './images/foto16.jpeg';
 import foto17 from './images/foto17.jpeg';
 import foto18 from './images/foto18.jpeg';
 import foto19 from './images/foto19.jpeg';
+import cartinhacinema from './images/cartinhacinema.jpeg'
+import cartinhacoração from './images/cartinhacoração.jpeg'
+
 
 
 function App() {
@@ -84,6 +87,49 @@ function App() {
     // adicione ou edite quantos momentos quiser
   ];
 
+  // ⚠️ EXEMPLO/PLACEHOLDER — estou usando fotos que você já tem só pra você ver como fica o layout.
+  // Quando sua namorada te mandar as cartinhas de verdade, troque o "src" pela foto/scan de cada uma
+  // e ajuste "titulo", "data" e "transcricao" (transcricao é opcional — se remover, o botão
+  // "Ler transcrição" simplesmente não aparece naquela cartinha).
+  const cartinhasExemplo = [
+    {
+      titulo: "Nosso primeiro cinema juntos!🤍",
+      data: "03/07/2026",
+      src: cartinhacinema,
+      transcricao: "Espero que esse seja o primeiro de infinitos cinemas que vamos fazer, um momento muito especial para mim, pois a pessoa que eu quero comigo para a vida está do meu lado. Obrigada por ser essa garota INCRÍVEL!",
+    },
+    {
+      titulo: "💓",
+      data: "12/06/2026",
+      src: cartinhacoração,
+      transcricao: "A vida é muito melhor com você! Eu te amo🤍 ",
+    },
+    // {
+    //   titulo: "Passeio no parque",
+    //   data: "22/07/2026",
+    //   src: foto14,
+    //   // transcricao é opcional — essa aqui não tem, então o botão "Ler transcrição" não aparece
+    // },
+    
+  ];
+
+  // ⚠️ EXEMPLO/PLACEHOLDER — ainda não temos o vídeo do pedido de namoro gravado.
+  // Quando você tiver o arquivo .mp4, siga esses passos:
+  //   1. Salve o vídeo em src/videos/ (crie essa pasta se não existir), ex: src/videos/pedido-namoro.mp4
+  //   2. Importe no topo do arquivo, junto com as fotos:
+  //        import pedidoNamoro from './videos/pedido-namoro.mp4';
+  //   3. Troque "src: undefined" abaixo por "src: pedidoNamoro"
+  //   4. Troque "capa: foto14" por uma foto/print que sirva de capa pro vídeo (ex: uma imagem sua e dela)
+  
+  const videoExemplo = {
+    titulo: "O Dia Que Te Pedi em Namoro",
+    subtitulo: "Um momento que vou guardar pra sempre",
+    src: undefined, // troque por: pedidoNamoro (depois de importar o .mp4)
+    capa: foto19,   // troque pela foto/print que vai servir de capa do vídeo
+    data: "09 de março de 2026",
+    duracao: "3:42",
+  };
+
   return (
     <div className="app-wrapper">
       {/* Corações e Estrelas de fundo */}
@@ -108,7 +154,10 @@ function App() {
 
       {/* Carrossel centralizado */}
       <div className="carrosel-wrapper">
-        <Carrosel3 titulo="" videos={series} momentos={momentos} />
+        <Carrosel3 titulo=""
+         videos={series} momentos={momentos} cartinhas={cartinhasExemplo}
+        //  video={videoExemplo}
+          />
       </div>
     </div>
   );

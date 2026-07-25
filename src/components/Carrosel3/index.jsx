@@ -1,7 +1,18 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll } from "framer-motion";
 import style from './style.module.css';
-import { FaHeart } from "react-icons/fa";
+import {
+    FaHeart,
+    FaEnvelope,
+    FaThumbtack,
+    FaTimes,
+    FaChevronLeft,
+    FaChevronRight,
+    FaChevronDown,
+    FaStar,
+    FaHandPointer,
+    FaPlay,
+} from "react-icons/fa";
 import { CiCalendar } from "react-icons/ci";
 import { GoClock } from "react-icons/go";
 
@@ -68,12 +79,90 @@ function TextoRevelado({ texto, className, delayPorLetra = 0.25, cursor = true }
     );
 }
 
-export default function Carrosel3({ titulo, videos, momentos = [] }) {
+/**
+ * Formato esperado de cada item em `cartinhas`:
+ * {
+ *   titulo: "Cinema",
+ *   data: "18/04/2026",
+ *   src: "/imagens/cartinha-cinema.jpg", // scan/foto da cartinha
+ *   transcricao: "Foi uma noite simples, mas que ficou marcada pra mim..."
+ * }
+ */
+export default function Carrosel3({ titulo, videos, momentos = [], cartinhas = [], video = null }) {
     const [indice, setIndice] = useState(0);
     const [pausado, setPausado] = useState(false);
     const itemRef = useRef(null);
     const timelineRef = useRef(null);
     const [tempo, setTempo] = useState({ meses: 0, dias: 0, horas: 0 });
+
+    // ====== CARTINHAS ======
+    // cartinhaAberta: index original clicado (fixo, usado no layoutId da animação de abertura)
+    // indiceAtual: index exibido no momento dentro do modal (muda ao navegar com as setas)
+    const [cartinhaAberta, setCartinhaAberta] = useState(null);
+    const [indiceAtual, setIndiceAtual] = useState(null);
+    const [transcricaoAberta, setTranscricaoAberta] = useState(false);
+
+    function abrirCartinha(index) {
+        setCartinhaAberta(index);
+        setIndiceAtual(index);
+        setTranscricaoAberta(false);
+    }
+
+    function fecharCartinha() {
+        setCartinhaAberta(null);
+        setIndiceAtual(null);
+        setTranscricaoAberta(false);
+    }
+
+    function cartinhaAnterior() {
+        setTranscricaoAberta(false);
+        setIndiceAtual((prev) => (prev - 1 + cartinhas.length) % cartinhas.length);
+    }
+
+    function cartinhaProxima() {
+        setTranscricaoAberta(false);
+        setIndiceAtual((prev) => (prev + 1) % cartinhas.length);
+    }
+
+    // Fecha o modal com a tecla Esc e trava o scroll da página enquanto ele está aberto
+    useEffect(() => {
+        function handleTecla(event) {
+            if (event.key === "Escape") fecharCartinha();
+        }
+
+        if (cartinhaAberta !== null) {
+            document.addEventListener("keydown", handleTecla);
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+
+        return () => {
+            document.removeEventListener("keydown", handleTecla);
+            document.body.style.overflow = "";
+        };
+    }, [cartinhaAberta]);
+
+    const cartinhaModal = indiceAtual !== null ? cartinhas[indiceAtual] : null;
+    // ====== FIM CARTINHAS ======
+
+    // ====== VÍDEO ESPECIAL (VLOG) ======
+    const [videoTocando, setVideoTocando] = useState(false);
+    const videoRef = useRef(null);
+
+    function tocarVideo() {
+        setVideoTocando(true);
+    }
+
+    // Assim que o player entra na tela (troca a capa pelo <video>), inicia a reprodução
+    useEffect(() => {
+        if (videoTocando && videoRef.current) {
+            videoRef.current.play().catch(() => {
+                // Alguns navegadores bloqueiam autoplay com som; o usuário pode dar play manualmente
+            });
+        }
+    }, [videoTocando]);
+    // ====== FIM VÍDEO ESPECIAL ======
 
     // Acompanha o progresso de rolagem dentro da timeline para "preencher" a linha
     const { scrollYProgress } = useScroll({
@@ -222,6 +311,241 @@ export default function Carrosel3({ titulo, videos, momentos = [] }) {
                     </div>
                 </div>
             </motion.div>
+
+            <div className={style.line}>
+                <hr />
+                <FaHeart />
+                <hr />
+            </div>
+
+            {/* ====== NOSSAS CARTINHAS ====== */}
+            <motion.div
+                className={style.cartinhasSection}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
+                variants={fadeUp}
+                transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+                <div className={style.cartinhasHeader}>
+                    <FaEnvelope />
+                    <h1>Nossas Cartinhas</h1>
+                    <strong>Um lugar para guardar palavras que merecem atravessar o tempo.</strong>
+                </div>
+
+                <div className={style.cartinhasMural}>
+                    {/* Decorações flutuantes de fundo */}
+                    <FaHeart className={`${style.decoracaoFlutuante} ${style.decoracao1}`} />
+                    <FaStar className={`${style.decoracaoFlutuante} ${style.decoracao2}`} />
+                    <FaStar className={`${style.decoracaoFlutuante} ${style.decoracao3}`} />
+                    <FaHeart className={`${style.decoracaoFlutuante} ${style.decoracao4}`} />
+                    <FaStar className={`${style.decoracaoFlutuante} ${style.decoracao5}`} />
+
+                    {cartinhas.length > 0 ? (
+                        <div className={style.cartinhasGrid}>
+                            {cartinhas.map((cartinha, index) => (
+                                <motion.div
+                                    key={index}
+                                    layoutId={`cartinha-${index}`}
+                                    className={style.cartinhaCard}
+                                    style={{ rotate: index % 2 === 0 ? -2 : 2 }}
+                                    whileHover={{ scale: 1.05, rotate: 0 }}
+                                    transition={{ duration: 0.3 }}
+                                    onClick={() => abrirCartinha(index)}
+                                >
+                                    <FaThumbtack className={style.alfinete} />
+                                    <FaEnvelope className={style.cartinhaIcone} />
+                                    <h3 className={style.cartinhaTitulo}>{cartinha.titulo}</h3>
+                                    <span className={style.cartinhaData}>{cartinha.data}</span>
+                                    <FaHeart className={style.cartinhaCoracao} />
+                                </motion.div>
+                            ))}
+                        </div>
+                    ) : (
+                        <div className={style.cartinhasVazio}>
+                            <FaEnvelope className={style.cartinhasVazioIcone} />
+                            <p>Ainda não temos cartinhas por aqui.</p>
+                            <p>Mas cada palavra escrita vira uma memória pra sempre.</p>
+                        </div>
+                    )}
+
+                    {cartinhas.length > 0 && (
+                        <div className={style.cartinhasDica}>
+                            <FaHandPointer />
+                            <span>Toque em uma cartinha para abrir</span>
+                        </div>
+                    )}
+                </div>
+            </motion.div>
+            {/* ====== FIM NOSSAS CARTINHAS ====== */}
+
+            {/* ====== MODAL DA CARTINHA ====== */}
+            <AnimatePresence>
+                {cartinhaModal && (
+                    <motion.div
+                        className={style.modalOverlay}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        onClick={fecharCartinha}
+                    >
+                        <motion.div
+                            layoutId={`cartinha-${cartinhaAberta}`}
+                            className={style.modalCartinha}
+                            onClick={(e) => e.stopPropagation()}
+                            transition={{ duration: 0.4, ease: "easeInOut" }}
+                        >
+                            <button
+                                type="button"
+                                className={style.modalFechar}
+                                onClick={fecharCartinha}
+                                aria-label="Fechar"
+                            >
+                                <FaTimes />
+                            </button>
+
+                            {cartinhas.length > 1 && (
+                                <button
+                                    type="button"
+                                    className={style.modalNavAnterior}
+                                    onClick={cartinhaAnterior}
+                                    aria-label="Cartinha anterior"
+                                >
+                                    <FaChevronLeft />
+                                </button>
+                            )}
+
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={indiceAtual}
+                                    className={style.modalConteudo}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.25 }}
+                                >
+                                    <h3 className={style.modalTitulo}>{cartinhaModal.titulo}</h3>
+                                    <span className={style.modalData}>{cartinhaModal.data}</span>
+
+                                    <div className={style.modalImagemContainer}>
+                                        {cartinhaModal.src && (
+                                            <img src={cartinhaModal.src} alt={cartinhaModal.titulo} />
+                                        )}
+                                    </div>
+
+                                    {cartinhaModal.transcricao && (
+                                        <>
+                                            <button
+                                                type="button"
+                                                className={style.modalTranscricaoBtn}
+                                                onClick={() => setTranscricaoAberta((prev) => !prev)}
+                                            >
+                                                {transcricaoAberta ? "Ocultar" : "Ler transcrição"}
+                                                <FaChevronDown
+                                                    className={`${style.modalTranscricaoChevron} ${transcricaoAberta ? style.chevronAberto : ""}`}
+                                                />
+                                            </button>
+
+                                            <AnimatePresence>
+                                                {transcricaoAberta && (
+                                                    <motion.div
+                                                        className={style.modalTranscricaoTexto}
+                                                        initial={{ height: 0, opacity: 0 }}
+                                                        animate={{ height: "auto", opacity: 1 }}
+                                                        exit={{ height: 0, opacity: 0 }}
+                                                        transition={{ duration: 0.35, ease: "easeInOut" }}
+                                                    >
+                                                        <p>{cartinhaModal.transcricao}</p>
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </>
+                                    )}
+                                </motion.div>
+                            </AnimatePresence>
+
+                            {cartinhas.length > 1 && (
+                                <button
+                                    type="button"
+                                    className={style.modalNavProxima}
+                                    onClick={cartinhaProxima}
+                                    aria-label="Próxima cartinha"
+                                >
+                                    <FaChevronRight />
+                                </button>
+                            )}
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+            {/* ====== FIM MODAL DA CARTINHA ====== */}
+
+            <div className={style.line}>
+                <hr />
+                <FaHeart />
+                <hr />
+            </div>
+
+            {/* ====== VÍDEO ESPECIAL (VLOG) ====== */}
+            {video && (
+                <motion.div
+                    className={style.videoSection}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    variants={fadeUp}
+                    transition={{ duration: 0.7, ease: "easeOut" }}
+                >
+                    <div className={style.videoHeader}>
+                        <h1>{video.titulo || "Um Dia Especial"}</h1>
+                        <strong>{video.subtitulo || "Um momento que vou guardar pra sempre"}</strong>
+                    </div>
+
+                    <div className={style.videoPlayerWrapper}>
+                        {!videoTocando ? (
+                            <motion.div
+                                className={style.videoCapa}
+                                onClick={tocarVideo}
+                                style={{ backgroundImage: video.capa ? `url(${video.capa})` : "none" }}
+                                whileHover={{ scale: 1.02 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <span className={style.videoSelo}>
+                                    <FaHeart /> VLOG ESPECIAL
+                                </span>
+
+                                <div className={style.videoBotaoPlay}>
+                                    <FaPlay />
+                                </div>
+
+                                {(video.data || video.duracao) && (
+                                    <div className={style.videoInfoCapa}>
+                                        {video.data && <span>{video.data}</span>}
+                                        {video.duracao && <span>{video.duracao}</span>}
+                                    </div>
+                                )}
+                            </motion.div>
+                        ) : (
+                            <motion.div
+                                className={style.videoPlayerAtivo}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.4 }}
+                            >
+                                <video
+                                    ref={videoRef}
+                                    src={video.src}
+                                    controls
+                                    playsInline
+                                    className={style.videoElemento}
+                                />
+                            </motion.div>
+                        )}
+                    </div>
+                </motion.div>
+            )}
+            {/* ====== FIM VÍDEO ESPECIAL ====== */}
 
             <div className={style.line}>
                 <hr />
