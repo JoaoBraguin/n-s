@@ -22,6 +22,10 @@ import foto17 from './images/foto17.jpeg';
 import foto18 from './images/foto18.jpeg';
 import foto19 from './images/foto19.jpeg';
 import foto20 from './images/foto20.jpeg';
+import foto21 from './images/foto21.jpeg';
+import foto22 from './images/foto22.jpeg';
+import foto23 from './images/foto23.jpeg';
+import foto24 from './images/foto24.jpeg';
 import cartinhacinema from './images/cartinhacinema.jpeg'
 import cartinhacoração from './images/cartinhacoração.jpeg'
 
@@ -69,6 +73,10 @@ function App() {
     { src: foto18, title: "", description: "" },
     { src: foto19, title: "", description: "" },
     { src: foto20, title: "", description: "" },
+    { src: foto21, title: "", description: "" },
+    { src: foto22, title: "", description: "" },
+    { src: foto23, title: "", description: "" },
+    { src: foto24, title: "", description: "" },
   ];
 
   const momentos = [
@@ -85,8 +93,11 @@ function App() {
     { data: "17 de julho de 2026", title: "Nosso primeiro quitute juntos🤍", description: "Foto junto com o Chavinho | Dia 1", src: foto15 },
     { data: "17 de julho de 2026", title: "Nosso primeiro quitute juntos🤍", description: "Dia 1", src: foto16 },
     { data: "18 de julho de 2026", title: "Nosso primeiro quitute juntos🤍", description: "Dia 2", src: foto18 },
-    { data: "18 de julho de 2026", title: "Nosso primeiro quitute juntos🤍", description: "Foto junto na roda gigante🤍", src: foto19 },
-    
+    { data: "26 de julho de 2026", title: "Pedido na Roda Gigante 🤍", description: "Oficialmente namorados 🤍", src: foto21 },
+    { data: "26 de julho de 2026", title: "Dia Dos Brinquedos 🤍", description: "Dia 3", src: foto22 },
+    { data: "26 de julho de 2026", title: " Montanha Russa 🤍", description: "Dia 3 ", src: foto23 },
+    { data: "26 de julho de 2026", title: "Nosso pedido de namoro 🤍", description: "Nossas Alianças 🤍", src: foto24 },
+   
     // adicione ou edite quantos momentos quiser
   ];
 
