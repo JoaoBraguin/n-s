@@ -109,13 +109,13 @@ function App() {
     {
       titulo: "Nosso primeiro cinema juntos!🤍",
       data: "03/07/2026",
-      src: cartinhacinema.src ,
+      src: cartinhacinema ,
       transcricao: "Espero que esse seja o primeiro de infinitos cinemas que vamos fazer, um momento muito especial para mim, pois a pessoa que eu quero comigo para a vida está do meu lado. Obrigada por ser essa garota INCRÍVEL!",
     },
     {
       titulo: "💓",
       data: "12/06/2026",
-      src: cartinhacoração.src ,
+      src: cartinhacoração ,
       transcricao: "A vida é muito melhor com você! Eu te amo🤍 ",
     },
     // {

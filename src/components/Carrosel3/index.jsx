@@ -61,7 +61,7 @@ function TextoRevelado({ texto, className, delayPorLetra = 0.25, cursor = true }
             style={{ display: "inline-block" }}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.6 }}
+            viewport={{ once: true, amount: 0 }}
             transition={{ staggerChildren: delayPorLetra }}
         >
             {texto.split("").map((letra, i) => (
@@ -235,7 +235,7 @@ export default function Carrosel3({ titulo, videos, momentos = [], cartinhas = [
                 className={style.start}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0 }}
                 variants={fadeUp}
                 transition={{ duration: 0.7, ease: "easeOut" }}
             >
@@ -266,7 +266,7 @@ export default function Carrosel3({ titulo, videos, momentos = [], cartinhas = [
                 className={style.music}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0, margin: "0px 0px -100px 0px" }}
                 variants={fadeUp}
                 transition={{ duration: 0.7, ease: "easeOut" }}
             >
@@ -293,7 +293,7 @@ export default function Carrosel3({ titulo, videos, momentos = [], cartinhas = [
                 className={style.eu}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0, margin: "0px 0px -100px 0px" }}
                 variants={fadeUp}
                 transition={{ duration: 0.7, ease: "easeOut" }}
             >
@@ -323,7 +323,7 @@ export default function Carrosel3({ titulo, videos, momentos = [], cartinhas = [
                 className={style.cartinhasSection}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
+                viewport={{ once: true, amount: 0, margin: "0px 0px -150px 0px" }}
                 variants={fadeUp}
                 transition={{ duration: 0.7, ease: "easeOut" }}
             >
@@ -493,7 +493,7 @@ export default function Carrosel3({ titulo, videos, momentos = [], cartinhas = [
                     className={style.videoSection}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
+                    viewport={{ once: true, amount: 0, margin: "0px 0px -150px 0px" }}
                     variants={fadeUp}
                     transition={{ duration: 0.7, ease: "easeOut" }}
                 >
@@ -557,7 +557,7 @@ export default function Carrosel3({ titulo, videos, momentos = [], cartinhas = [
                 className={style.carrossel}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0, margin: "0px 0px -150px 0px" }}
                 variants={fadeUp}
                 transition={{ duration: 0.7, ease: "easeOut" }}
             >
@@ -606,7 +606,7 @@ export default function Carrosel3({ titulo, videos, momentos = [], cartinhas = [
                 className={style.timelineSection}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.1, margin: "0px 0px -150px 0px" }}
+                viewport={{ once: true, amount: 0, margin: "0px 0px -300px 0px" }}
                 variants={fadeUp}
                 transition={{ duration: 0.7, ease: "easeOut" }}
             >
@@ -627,7 +627,7 @@ export default function Carrosel3({ titulo, videos, momentos = [], cartinhas = [
                             className={style.timelineItem}
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, amount: 0.1, margin: "0px 0px -100px 0px" }}
+                            viewport={{ once: true, amount: 0, margin: "0px 0px -200px 0px" }}
                             transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
                         >
                             <div className={style.backheart}>
