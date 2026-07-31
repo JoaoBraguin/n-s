@@ -12,6 +12,7 @@ import {
     FaStar,
     FaHandPointer,
     FaPlay,
+    FaRing,
 } from "react-icons/fa";
 import { CiCalendar } from "react-icons/ci";
 import { GoClock } from "react-icons/go";
@@ -27,6 +28,34 @@ const DURACAO_SLIDE = 3000; // ms — mantenha igual ao valor usado no setInterv
 // Data de início do relacionamento — fica fora do componente para não ser
 // recriada a cada renderização (evita o warning de dependência do useEffect)
 const DATA_INICIO = new Date(2026, 2, 9); // mês 2 = março (0-indexado)
+
+// Data do pedido de namoro oficial — mesma lógica da DATA_INICIO acima
+const DATA_NAMORO = new Date(2026, 6, 26); // mês 6 = julho (0-indexado)
+
+// Calcula meses/dias/horas completos desde uma data até agora.
+// Reaproveitada tanto para a contagem "Juntos desde" quanto para "Oficialmente Namorados".
+function calcularDiferenca(dataInicio) {
+    const agora = new Date();
+
+    // Calcula meses completos entre as duas datas
+    let meses = (agora.getFullYear() - dataInicio.getFullYear()) * 12
+        + (agora.getMonth() - dataInicio.getMonth());
+
+    // Se o dia atual ainda não chegou no dia do aniversário do mês, não conta o mês corrente
+    if (agora.getDate() < dataInicio.getDate()) {
+        meses -= 1;
+    }
+
+    // Data do último "aniversário mensal" já completado
+    const ultimoMarco = new Date(dataInicio);
+    ultimoMarco.setMonth(dataInicio.getMonth() + meses);
+
+    const diffMs = agora - ultimoMarco;
+    const dias = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diffMs / (1000 * 60 * 60)) % 24);
+
+    return { meses, dias, horas };
+}
 
 // Componente reutilizável: mostra um número com efeito de "flip" quando o valor muda
 function FlipNumber({ value }) {
@@ -94,6 +123,7 @@ export default function Carrosel3({ titulo, videos, momentos = [], cartinhas = [
     const itemRef = useRef(null);
     const timelineRef = useRef(null);
     const [tempo, setTempo] = useState({ meses: 0, dias: 0, horas: 0 });
+    const [tempoNamoro, setTempoNamoro] = useState({ meses: 0, dias: 0, horas: 0 });
 
     // ====== CARTINHAS ======
     // cartinhaAberta: index original clicado (fixo, usado no layoutId da animação de abertura)
@@ -171,31 +201,13 @@ export default function Carrosel3({ titulo, videos, momentos = [], cartinhas = [
     });
 
     useEffect(() => {
-        function calcularTempo() {
-            const agora = new Date();
-
-            // Calcula meses completos entre as duas datas
-            let meses = (agora.getFullYear() - DATA_INICIO.getFullYear()) * 12
-                + (agora.getMonth() - DATA_INICIO.getMonth());
-
-            // Se o dia atual ainda não chegou no dia do aniversário do mês, não conta o mês corrente
-            if (agora.getDate() < DATA_INICIO.getDate()) {
-                meses -= 1;
-            }
-
-            // Data do último "aniversário mensal" já completado
-            const ultimoMarco = new Date(DATA_INICIO);
-            ultimoMarco.setMonth(DATA_INICIO.getMonth() + meses);
-
-            const diffMs = agora - ultimoMarco;
-            const dias = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((diffMs / (1000 * 60 * 60)) % 24);
-
-            setTempo({ meses, dias, horas });
+        function atualizarContagens() {
+            setTempo(calcularDiferenca(DATA_INICIO));
+            setTempoNamoro(calcularDiferenca(DATA_NAMORO));
         }
 
-        calcularTempo();
-        const interval = setInterval(calcularTempo, 60 * 1000); // atualiza a cada minuto
+        atualizarContagens();
+        const interval = setInterval(atualizarContagens, 60 * 1000); // atualiza a cada minuto
         return () => clearInterval(interval);
     }, []);
 
@@ -239,24 +251,70 @@ export default function Carrosel3({ titulo, videos, momentos = [], cartinhas = [
                 variants={fadeUp}
                 transition={{ duration: 0.7, ease: "easeOut" }}
             >
-                <FaHeart />
-                <h1>Para a minha Gatinha</h1>
-                <div className={style.calendario}>
-                    <CiCalendar />
-                    <p>Juntos desde 09 de março de 2026</p>
+                <div className={style.coracaoinicio}>
+                    <FaHeart />
+                    <h1>Para a minha Gatinha</h1>
                 </div>
-                <div className={style.contagem}>
-                    <div className={style.circle}>
-                        <strong><FlipNumber value={tempo.meses} /></strong>
-                        <strong>MESES</strong>
+
+                <div className={style.marcosCard}>
+                    <div className={style.marco}>
+                        <div className={style.marcoHeader}>
+                            <span className={style.marcoIcone}>
+                                <FaHeart />
+                            </span>
+                            <div className={style.marcoTexto}>
+                                <strong>Juntos desde</strong>
+                                <span>
+                                    <CiCalendar />
+                                    09 de março de 2026
+                                </span>
+                            </div>
+                        </div>
+                        <div className={style.marcoStats}>
+                            <div className={style.stat}>
+                                <strong><FlipNumber value={tempo.meses} /></strong>
+                                <span>MESES</span>
+                            </div>
+                            <div className={style.stat}>
+                                <strong><FlipNumber value={tempo.dias} /></strong>
+                                <span>DIAS</span>
+                            </div>
+                            <div className={style.stat}>
+                                <strong><FlipNumber value={tempo.horas} /></strong>
+                                <span>HORAS</span>
+                            </div>
+                        </div>
                     </div>
-                    <div className={style.circle}>
-                        <strong><FlipNumber value={tempo.dias} /></strong>
-                        <strong>DIAS</strong>
-                    </div>
-                    <div className={style.circle}>
-                        <strong><FlipNumber value={tempo.horas} /></strong>
-                        <strong>HORAS</strong>
+
+                    <div className={style.marcoDivisor} />
+
+                    <div className={style.marco}>
+                        <div className={style.marcoHeader}>
+                            <span className={style.marcoIcone}>
+                                <FaRing />
+                            </span>
+                            <div className={style.marcoTexto}>
+                                <strong>Namorados oficialmente 🤍</strong>
+                                <span>
+                                    <CiCalendar />
+                                    26 de julho de 2026
+                                </span>
+                            </div>
+                        </div>
+                        <div className={style.marcoStats}>
+                            <div className={style.stat}>
+                                <strong><FlipNumber value={tempoNamoro.meses} /></strong>
+                                <span>MESES</span>
+                            </div>
+                            <div className={style.stat}>
+                                <strong><FlipNumber value={tempoNamoro.dias} /></strong>
+                                <span>DIAS</span>
+                            </div>
+                            <div className={style.stat}>
+                                <strong><FlipNumber value={tempoNamoro.horas} /></strong>
+                                <span>HORAS</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </motion.div>
@@ -298,15 +356,18 @@ export default function Carrosel3({ titulo, videos, momentos = [], cartinhas = [
                 transition={{ duration: 0.7, ease: "easeOut" }}
             >
                 <div className={style.dec}>
-                    <p>QUATRO MESES DE NÓS</p>
-                    <p>Você me ilumina todos os dias !</p>
-                    <p>Quero ficar ao seu lado minha vida inteira</p>
-                    <p>Muito Obrigado por tanto, você é a mulher que eu sempre sonhei !</p>
-                    <p>Eu amo esse sorriso !</p>
+                    <p>OFICIALMENTE NAMORADOS !</p>
+                    <p>Por mais que não tenha saido como tudo planejado, foi muito especial para mim !</p>
+                    <p>É o nosso dia !</p>
+                    <p>Desde de quando começamos a ficar eu sonhava com esse dia, e finalmente ele chegou</p>
+                    <p>Eu amo você</p>
+                    <p>Amo a nossa intensidade</p>
                     <p>Amo nosso jeito, amo você por inteira!</p>
+                    <p>Quero ficar ao seu lado a vida inteira !</p>
                     <div className={style.emvolta}>
                         <h1 className={style.final}>
-                            <TextoRevelado texto="EU TE AMO ❤" />
+                            <TextoRevelado texto="EU TE AMO MUITO ❤" />
+                            <TextoRevelado texto="EU AMO O SEU SORRISO ❤" />
                         </h1>
                     </div>
                 </div>
